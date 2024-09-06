@@ -91,7 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     naoBtn.addEventListener('touchstart', (e) => {
         e.preventDefault();
-        moveNaoBtn(e);
+        // Usar e.touches[0] para obter as coordenadas do toque em vez de e.clientX e e.clientY
+        const touch = e.touches[0];
+        moveNaoBtn({
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
     });
 
     window.addEventListener('resize', setButtonPositions);
